@@ -13,9 +13,11 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online)
     await channel.connect()
     print('Logged in as {0.user}'.format(client))
-    while True:
-        async client.VoiceChannel.connect
-        """
+
+    print(channel.on_voice_state_update)
+
+    """
+        while True:
         print("top")
         channel = client.get_channel(TARGET_CHANNEL)
         usrs_list = {}
@@ -27,7 +29,13 @@ async def on_ready():
                 await voice.disconnect()
         print(usrs_list)
         time.sleep(2)
-        """
+    """
+
+
+async def on_voice_state_update(member, before, after):
+    channel = client.get_channel(TARGET_CHANNEL)
+    channel.on_voice_state_update
+
 
 
 @client.event
@@ -39,4 +47,3 @@ async def on_message(message):
         await message.channel.send('running!')
 
 client.run(TOKEN)
-
